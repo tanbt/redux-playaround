@@ -5,6 +5,12 @@
   <meta charset="utf-8">
   <title>My Redux Playaround app</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script>
+    // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+    // https://github.com/reactjs/redux/issues/2907
+    window.process = { env: { NODE_ENV: 'development' } };
+  </script>
 </head>
 
 <body>
