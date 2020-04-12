@@ -4,8 +4,16 @@
   "description": "play with redux and lit-element app",
   "main": "index.js",
   "scripts": {
+    "start": "polymer serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Tan Bui",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "lit-element": "^2.3.1",
+    "redux": "^4.0.5"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.9.11"
+  }
 }
