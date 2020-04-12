@@ -1,0 +1,11 @@
+{
+  "name": "redux-playaround",
+  "version": "1.0.0",
+  "description": "play with redux and lit-element app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tan Bui",
+  "license": "ISC"
+}
