@@ -1,15 +1,13 @@
 import { LitElement, html, css } from 'lit-element';
 import { store } from '../store.js';
-import { VisibilityFilters, setVisibilityFilter } from '../actions/VisibilityFilters.js';
+import { VisibilityFilters as VF, setVisibilityFilter } from '../actions/VisibilityFilters.js';
 import { connect } from '../utils/connect-mixin.js';
 
 class MenuBar extends connect(store, LitElement) {
 
   static get properties() {
     return {
-      showAll: Boolean,
-      showActive: Boolean,
-      showCompleted: Boolean
+      filter: String
     }
   }
 
@@ -19,6 +17,10 @@ class MenuBar extends connect(store, LitElement) {
         font-weight: bold;
         color: #00F;
       }
+
+      a {
+        text-decoration: none;
+      }
     `;
   }
 
@@ -26,35 +28,33 @@ class MenuBar extends connect(store, LitElement) {
     return html`
       <div>
         Total: 5
+
         <button
-          ?selected="${this.showAll}"
-          @click="${() => this._setVisibility(VisibilityFilters.SHOW_ALL)}">
+          ?selected="${this.filter == VF.SHOW_ALL}"
+          @click="${() => this._setVisibility(VF.SHOW_ALL)}">
           All
         </button>
+
         <button
-          ?selected="${this.showActive}"
-          @click="${() => this._setVisibility(VisibilityFilters.SHOW_ACTIVE)}">
+          ?selected="${this.filter == VF.SHOW_ACTIVE}"
+          @click="${() => this._setVisibility(VF.SHOW_ACTIVE)}">
           Active
         </button>
+
         <button
-          ?selected="${this.showCompleted}"
-          @click="${() => this._setVisibility(VisibilityFilters.SHOW_COMPLETED)}">
-        Completed
+          ?selected="${this.filter == VF.SHOW_COMPLETED}"
+          @click="${() => this._setVisibility(VF.SHOW_COMPLETED)}">
+          Completed
         </button>
+
+        <a href="#">clear completed</a>
       </div>
     `;
   }
 
   constructor() {
     super();
-    this._resetProperties();
-    this.showAll = true;
-  }
-
-  _resetProperties() {
-    this.showAll = false;
-    this.showActive = false;
-    this.showCompleted = false;
+    this.filter = VF.SHOW_ALL;
   }
 
   _setVisibility(filter) {
@@ -62,17 +62,7 @@ class MenuBar extends connect(store, LitElement) {
   }
 
   stateChanged(state) {
-    this._resetProperties();
-    switch (state.visibilityFilter) {
-      case VisibilityFilters.SHOW_ACTIVE:
-        this.showActive = true;
-        break;
-      case VisibilityFilters.SHOW_COMPLETED:
-        this.showCompleted = true;
-        break;
-      default:
-        this.showAll = true;
-    }
+    this.filter = state.visibilityFilter;
   }
 
 }

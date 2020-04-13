@@ -13,7 +13,7 @@ class MyApp extends LitElement {
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 80vh;
+        height: 100vh;
         margin: 0;
         padding: 0;
         background: #EEE;
