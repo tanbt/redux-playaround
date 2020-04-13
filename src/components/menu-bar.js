@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { store } from '../store.js';
 import { VisibilityFilters as VF, setVisibilityFilter } from '../actions/VisibilityFilters.js';
+import { removeCompleted } from '../actions/Todos.js';
 import { connect } from '../utils/connect-mixin.js';
 
 class MenuBar extends connect(store, LitElement) {
@@ -48,7 +49,7 @@ class MenuBar extends connect(store, LitElement) {
           Completed
         </button>
 
-        <a href="#">clear completed</a>
+        <a href="#" @click="${this._removeCompleted}">clear completed</a>
       </div>
     `;
   }
@@ -61,6 +62,10 @@ class MenuBar extends connect(store, LitElement) {
 
   _setVisibility(filter) {
     store.dispatch(setVisibilityFilter(filter));
+  }
+
+  _removeCompleted() {
+    store.dispatch(removeCompleted());
   }
 
   stateChanged(state) {

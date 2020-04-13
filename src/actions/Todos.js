@@ -17,3 +17,7 @@ export const removeTodo = (itemId) => ({
   type: 'REMOVE_TODO',
   itemId
 })
+
+export const removeCompleted = () => ({
+  type: 'REMOVE_COMPLETED'
+})

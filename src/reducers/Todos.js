@@ -15,6 +15,9 @@ export const todos = (state = [], action) => {
     case 'REMOVE_TODO':
       return state.filter(todo => todo.id !== action.itemId);
 
+    case 'REMOVE_COMPLETED':
+      return state.filter(todo => !todo.completed);
+
     default:
       return state;
   }
