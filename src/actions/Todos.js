@@ -7,3 +7,8 @@ export function addTodo(text) {
     text
   }
 }
+
+export const toggleTodo = (itemId) => ({
+  type: 'TOGGLE_TODO',
+  itemId
+})

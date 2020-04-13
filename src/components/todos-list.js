@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { store } from '../store.js';
 import { connect } from '../utils/connect-mixin.js';
+import { toggleTodo } from '../actions/Todos.js';
 
 class TodosList extends connect(store, LitElement) {
 
@@ -49,7 +50,10 @@ class TodosList extends connect(store, LitElement) {
   }
 
   _markCompleted(e) {
-    console.log("Completing item id: " + e.target.parentElement.getAttribute('item-id'));
+    const itemId = Number(e.target.parentElement.getAttribute('item-id'));
+    if (itemId) {
+      store.dispatch(toggleTodo(itemId));
+    }
   }
 
 }
