@@ -7,7 +7,7 @@ class MenuBar extends LitElement {
   render() {
     return html`
       <div>
-        menu-bar goes here.
+        Total: 5
         <button @click="${() => this._setVisibility(VisibilityFilters.SHOW_ALL)}">
           All
         </button>

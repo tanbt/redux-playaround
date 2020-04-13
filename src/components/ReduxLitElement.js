@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement } from 'lit-element';
 import { store } from '../store.js';
 
 export class ReduxLitElement extends LitElement {
@@ -13,6 +13,9 @@ export class ReduxLitElement extends LitElement {
     this.storeUnsubscribe();
   }
 
+  /**
+   * override this method in child class
+   */
   stateChanged() {
   }
 

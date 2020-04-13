@@ -1,21 +1,49 @@
-import { html } from 'lit-element';
-import {store} from './store.js';
+import { LitElement, html, css } from 'lit-element';
 import './components/menu-bar.js';
-import { ReduxLitElement } from './components/ReduxLitElement.js';
+import './components/input-bar.js';
+import './components/todos-list.js';
 
-class MyApp extends ReduxLitElement {
+class MyApp extends LitElement {
 
-  render() {
-    return html`
-      <h1>Hello from my app!</h1>
-      Current visibility state: ${store.getState().visibilityFilter}
+  static get styles() {
+    return css`
+      :host {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 80vh;
+        margin: 0;
+        padding: 0;
+        background: #EEE;
+      }
 
-      <menu-bar></menu-bar>
+      #mainLayout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        padding: 1rem;
+        background: #FFF;
+        box-shadow: .2rem .2rem #999;
+      }
+
+      #mainLayout > * {
+        margin: .3rem 0;
+      }
     `;
   }
 
-  stateChanged() {
-    console.log(store.getState());
+  render() {
+    return html`
+      <h1>Todos</h1>
+      <div id="mainLayout">
+        <input-bar></input-bar>
+        <todos-list></todos-list>
+        <menu-bar></menu-bar>
+      </div>
+    `;
   }
 
 }
