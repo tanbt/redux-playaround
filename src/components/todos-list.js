@@ -1,7 +1,6 @@
-import { html } from 'lit-element';
-import { ReduxLitElement } from './ReduxLitElement.js';
+import { LitElement, html } from 'lit-element';
 
-class TodosList extends ReduxLitElement {
+class TodosList extends LitElement {
 
   render() {
     return html`

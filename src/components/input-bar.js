@@ -1,7 +1,6 @@
-import { html, css } from 'lit-element';
-import { ReduxLitElement } from './ReduxLitElement.js';
+import { LitElement, html, css } from 'lit-element';
 
-class InputBar extends ReduxLitElement {
+class InputBar extends LitElement {
 
   static get styles() {
     return css`
