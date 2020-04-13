@@ -2,7 +2,7 @@
  * from PWA-starter-kit
  */
 
-export const connect = (store) => (baseElement) => class extends baseElement {
+export const connect = (store, baseElement) => class extends baseElement {
   connectedCallback() {
       if (super.connectedCallback) {
           super.connectedCallback();

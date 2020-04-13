@@ -3,7 +3,7 @@ import { store } from '../store.js';
 import { VisibilityFilters, setVisibilityFilter } from '../actions/VisibilityFilters.js';
 import { connect } from '../utils/connect-mixin.js';
 
-class MenuBar extends connect(store)(LitElement) {
+class MenuBar extends connect(store, LitElement) {
 
   static get properties() {
     return {
