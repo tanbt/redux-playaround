@@ -11,7 +11,6 @@ class MenuBar extends LitElement {
         <button @click="${() => this._setVisibility(VisibilityFilters.SHOW_ALL)}">
           All
         </button>
-
         <button @click="${() => this._setVisibility(VisibilityFilters.SHOW_ACTIVE)}">
           Active
         </button>
@@ -24,7 +23,6 @@ class MenuBar extends LitElement {
 
   _setVisibility(filter) {
     store.dispatch(setVisibilityFilter(filter));
-    console.log(store.getState());
   }
 
 }

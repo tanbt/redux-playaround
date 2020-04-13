@@ -1,8 +1,9 @@
-import { LitElement, html, css } from 'lit-element';
+import { html } from 'lit-element';
 import {store} from './store.js';
 import './components/menu-bar.js';
+import { ReduxLitElement } from './components/ReduxLitElement.js';
 
-class MyApp extends LitElement {
+class MyApp extends ReduxLitElement {
 
   render() {
     return html`
@@ -13,8 +14,7 @@ class MyApp extends LitElement {
     `;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  stateChanged() {
     console.log(store.getState());
   }
 
