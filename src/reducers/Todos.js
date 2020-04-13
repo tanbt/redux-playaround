@@ -10,7 +10,10 @@ export const todos = (state = [], action) => {
     case 'TOGGLE_TODO':
       return state.map(todo =>
         todo.id === action.itemId ? { ...todo, completed: !todo.completed } : todo
-      )
+      );
+
+    case 'REMOVE_TODO':
+      return state.filter(todo => todo.id !== action.itemId);
 
     default:
       return state;

@@ -1,7 +1,7 @@
 import { LitElement, html, css } from 'lit-element';
 import { store } from '../store.js';
 import { connect } from '../utils/connect-mixin.js';
-import { toggleTodo } from '../actions/Todos.js';
+import { toggleTodo, removeTodo } from '../actions/Todos.js';
 
 class TodosList extends connect(store, LitElement) {
 
@@ -46,7 +46,10 @@ class TodosList extends connect(store, LitElement) {
   }
 
   _remove(e) {
-    console.log("Removing item id: " + e.target.parentElement.getAttribute('item-id'));
+    const itemId = Number(e.target.parentElement.getAttribute('item-id'));
+    if (itemId) {
+      store.dispatch(removeTodo(itemId));
+    }
   }
 
   _markCompleted(e) {

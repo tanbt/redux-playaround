@@ -1,4 +1,4 @@
-let nextTodoId = 0;
+let nextTodoId = 1;
 
 export function addTodo(text) {
   return {
@@ -10,5 +10,10 @@ export function addTodo(text) {
 
 export const toggleTodo = (itemId) => ({
   type: 'TOGGLE_TODO',
+  itemId
+})
+
+export const removeTodo = (itemId) => ({
+  type: 'REMOVE_TODO',
   itemId
 })
