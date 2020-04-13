@@ -7,7 +7,8 @@ class MenuBar extends connect(store, LitElement) {
 
   static get properties() {
     return {
-      filter: String
+      filter: String,
+      count: Number
     }
   }
 
@@ -27,7 +28,7 @@ class MenuBar extends connect(store, LitElement) {
   render() {
     return html`
       <div>
-        Total: 5
+        Total: ${this.count}
 
         <button
           ?selected="${this.filter == VF.SHOW_ALL}"
@@ -55,6 +56,7 @@ class MenuBar extends connect(store, LitElement) {
   constructor() {
     super();
     this.filter = VF.SHOW_ALL;
+    this.count = 0;
   }
 
   _setVisibility(filter) {
@@ -63,6 +65,7 @@ class MenuBar extends connect(store, LitElement) {
 
   stateChanged(state) {
     this.filter = state.visibilityFilter;
+    this.count = state.todos.length;
   }
 
 }
