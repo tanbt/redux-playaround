@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import { store } from '../store.js';
 import { connect } from '../utils/connect-mixin.js';
 import { toggleTodo, removeTodo } from '../actions/Todos.js';
+import { VisibilityFilters as VF } from '../actions/VisibilityFilters.js';
 
 class TodosList extends connect(store, LitElement) {
 
@@ -42,7 +43,20 @@ class TodosList extends connect(store, LitElement) {
   }
 
   stateChanged(state) {
-    this.items = state.todos;
+    this.items = this._getVisibleTodos(state.todos, state.visibilityFilter);
+  }
+
+  _getVisibleTodos(todos, filter) {
+    switch (filter) {
+      case VF.SHOW_ALL:
+        return todos
+      case VF.SHOW_COMPLETED:
+        return todos.filter(t => t.completed)
+      case VF.SHOW_ACTIVE:
+        return todos.filter(t => !t.completed)
+      default:
+        throw new Error('Unknown filter: ' + filter)
+    }
   }
 
   _remove(e) {
